@@ -1,4 +1,5 @@
 "use client";
+
 import { Loader2, Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import {
@@ -21,9 +22,14 @@ export function Credits() {
           variant="ghost"
           size="sm"
           className="flex items-center gap-2 h-9 px-4 py-2"
+          disabled={loading} // Disable button during loading
+          aria-label={loading ? "Loading credits" : "Credits menu"} // Accessibility improvement
         >
           {loading ? (
-            <Loader2 className="h-4 w-4 animate-spin" />
+            <Loader2 
+              className="h-4 w-4 animate-spin" 
+              aria-hidden="true" // Add aria-hidden for screen readers
+            />
           ) : (
             <>
               <svg
@@ -35,6 +41,7 @@ export function Credits() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className="h-4 w-4"
+                aria-hidden="true" // Add aria-hidden for decorative icon
               >
                 <circle cx="12" cy="12" r="8" />
                 <path d="M12 8v8" />
@@ -47,13 +54,22 @@ export function Credits() {
           )}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48">
+      <DropdownMenuContent 
+        align="end" 
+        className="min-w-[12rem]" // Use min-width instead of fixed width
+        sideOffset={8} // Add spacing from trigger
+      >
         <DropdownMenuItem
-          className="flex items-center justify-between cursor-pointer"
-          onClick={() => router.push("/pricing")}
+          className="flex items-center justify-between cursor-pointer hover:bg-accent focus:bg-accent" // Better hover/focus states
+          onSelect={() => router.push("/pricing")} // Use onSelect instead of onClick
+          role="button" // Explicit role declaration
+          aria-label="Add credits" // Accessibility label
         >
           <span>Add Credits</span>
-          <Plus className="h-4 w-4" />
+          <Plus 
+            className="h-4 w-4" 
+            aria-hidden="true" // Add aria-hidden for decorative icon
+          />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

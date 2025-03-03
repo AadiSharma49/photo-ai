@@ -9,7 +9,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 export function Appbar() {
   return (
-    <div className="bg-background"> {/* Changed from bg-black to theme-aware background */}
+    <div className="bg-black">
       <motion.header
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -20,7 +20,7 @@ export function Appbar() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 backdrop-blur-xl rounded-2xl bg-background/50 border border-neutral-300 dark:border-neutral-800 shadow-lg" {/* Adjusted dark border */}
+          className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 backdrop-blur-xl rounded-2xl bg-background/50 border border-neutral-300 dark:border-neutral-900 shadow-lg"
         >
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
@@ -28,7 +28,6 @@ export function Appbar() {
               <Link
                 href="/"
                 className="flex items-center space-x-2 transition-opacity hover:opacity-90"
-                aria-label="Home" {/* Added aria-label for accessibility */}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -39,8 +38,6 @@ export function Appbar() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className="h-6 w-6"
-                  role="img" {/* Added role for accessibility */}
-                  aria-label="Logo" {/* Added aria-label */}
                 >
                   <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
                 </svg>
@@ -56,7 +53,7 @@ export function Appbar() {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70 transition-colors" {/* Improved contrast */}
+                  className="dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition"
                   asChild
                 >
                   <Link href="/dashboard">Dashboard</Link>
@@ -64,7 +61,7 @@ export function Appbar() {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70 transition-colors" {/* Improved contrast */}
+                  className="dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition"
                   asChild
                 >
                   <Link href="/purchases">My Purchases</Link>
@@ -74,7 +71,8 @@ export function Appbar() {
                   afterSignOutUrl="/"
                   appearance={{
                     elements: {
-                      avatarBox: "h-8 w-8 rounded-full ring-2 ring-primary/10 transition-all hover:ring-primary/30",
+                      avatarBox:
+                        "h-8 w-8 rounded-full ring-2 ring-primary/10 transition-all hover:ring-primary/30",
                       userButtonPopover: "right-0 mt-2",
                     },
                   }}
@@ -84,7 +82,7 @@ export function Appbar() {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200/70 dark:hover:bg-neutral-800/70 transition-colors" {/* Consistent styling */}
+                  className="dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition"
                   asChild
                 >
                   <Link href="/pricing">Pricing</Link>
@@ -96,7 +94,7 @@ export function Appbar() {
                   <Button
                     variant="default"
                     size="sm"
-                    className="relative overflow-hidden bg-gradient-to-r from-neutral-800 to-neutral-900 text-white dark:from-neutral-600 dark:to-neutral-700 border border-neutral-600 dark:border-neutral-600 rounded-lg shadow-md shadow-neutral-800/20 dark:shadow-black/30 px-4 py-2 font-medium tracking-wide transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] transform-gpu" {/* Added transform-gpu for performance */}
+                    className="relative overflow-hidden bg-gradient-to-r from-neutral-800 to-neutral-900 text-white dark:from-neutral-700 dark:to-neutral-800 border border-neutral-600 dark:border-neutral-700 rounded-lg shadow-md shadow-neutral-800/20 dark:shadow-black/30 px-4 py-2 font-medium tracking-wide transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] hover:from-neutral-700 hover:to-neutral-900 dark:hover:from-neutral-600 dark:hover:to-neutral-750"
                     asChild
                   >
                     <SignInButton mode="modal">
